@@ -1,0 +1,3 @@
+/* Small-screen safeguards shared by all dashboard pages. */
+.page-heading{gap:16px;flex-wrap:wrap}.detail-actions,.profile-actions{flex-wrap:wrap}.offcanvas-body .brand{display:none}
+@media(max-width:575.98px){.page-heading{align-items:flex-start;gap:12px}.toolbar .search-field{min-width:100%;max-width:none}.section-note{align-items:flex-start}.modal-dialog{margin:12px}.modal-footer{flex-wrap:wrap}.modal-footer .btn{flex:1}.detail-actions .btn,.profile-actions .btn{flex:1 1 auto}}

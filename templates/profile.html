@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Profile Update | Smart Khata</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Smart Khata CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pages.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+
+
+<body class="app-body">
+<div id="flash-messages">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            {% for category, message in messages %}
+
+                <div class="flash-toast flash-{{ category }}">
+
+                    <span>
+                        {{ message }}
+                    </span>
+
+                    <button type="button"
+                            class="flash-close"
+                            onclick="this.parentElement.remove()">
+                        &times;
+                    </button>
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+</div>
+    <div class="offcanvas offcanvas-start app-sidebar" tabindex="-1" id="mobileSidebar">
+
+        <div class="offcanvas-header">
+
+            <span class="brand brand-light">
+
+                <span class="brand-mark">
+                    <i class="bi bi-journal-check"></i>
+                </span>
+
+                Smart Khata
+
+            </span>
+
+            <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas">
+            </button>
+        </div>
+        <div class="offcanvas-body p-0" data-sidebar-content>
+        </div>
+    </div>
+    <aside class="app-sidebar desktop-sidebar d-none d-lg-flex" data-sidebar-content>
+    </aside>
+    <main class="app-main">
+        <header class="topbar">
+
+            <!-- Mobile menu -->
+
+            <button class="btn menu-button d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+
+            <!-- Page title -->
+
+            <div>
+
+                <p class="page-kicker">
+                    ACCOUNT SETTINGS
+                </p>
+
+                <h1>
+                    Profile
+                </h1>
+
+            </div>
+
+
+            <!-- Topbar actions -->
+
+            <div class="topbar-actions">
+
+                <button class="btn icon-button" type="button">
+
+                    <i class="bi bi-bell"></i>
+
+                </button>
+
+
+                <span class="avatar">
+                    AS
+                </span>
+
+            </div>
+
+        </header>
+
+        <section class="content-wrap">
+
+
+            <!-- Page heading -->
+
+            <div class="page-heading">
+
+                <div>
+
+                    <h2>
+                        Profile Update
+                    </h2>
+
+                    <p>
+                        Update your personal and shop details.
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-7 col-md-10 col-12">
+                    <section class="profile-card">
+                        <div class="mb-4">
+                            <h3>
+                                Update Personal & Shop Details
+                            </h3>
+                            <p class="text-secondary mb-0">
+                                Keep your shop information up to date.
+                            </p>
+                        </div>
+                        <form method="POST" action="{{ url_for('profile') }}" id="profileUpdateForm">
+
+                            <!-- SHOPKEEPER NAME -->
+
+                            <div class="mb-3">
+
+                                <label for="shopkeeperName" class="form-label">
+                                    Shopkeeper Name
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-person"></i>
+                                    </span>
+
+                                    <input type="text" class="form-control" id="shopkeeperName" name="shopkeeper_name"
+                                        value="{{ shopkeeper['shopkeeper_name'] }}" placeholder="Enter shopkeeper name"
+                                        autocomplete="name" required>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- SHOP NAME -->
+
+                            <div class="mb-3">
+
+                                <label for="shopName" class="form-label">
+                                    Shop Name
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-shop"></i>
+                                    </span>
+
+                                    <input type="text" class="form-control" id="shopName" name="shop_name"
+                                        value="{{ shopkeeper['shop_name'] }}" placeholder="Enter shop name" required>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- MOBILE NUMBER -->
+
+                            <div class="mb-3">
+
+                                <label for="phoneNumber" class="form-label">
+                                    Mobile Number
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-telephone"></i>
+                                    </span>
+
+                                    <input type="tel" class="form-control" id="phoneNumber" name="mobile_number"
+                                        value="{{ shopkeeper['phone_number'] }}" placeholder="Enter mobile number"
+                                        maxlength="10" inputmode="numeric" required>
+                                </div>
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+
+                            <div class="mb-4">
+
+                                <label for="email" class="form-label">
+                                    Email Address
+                                </label>
+
+                                <div class="input-group">
+
+                                    <span class="input-group-text">
+                                        <i class="bi bi-envelope"></i>
+                                    </span>
+
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        value="{{ shopkeeper['email'] }}" placeholder="Enter email address"
+                                        autocomplete="email" required>
+
+                                </div>
+
+                            </div>
+                            <div class="profile-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check2-circle me-1"></i>
+                                    Update Profile
+                                </button>
+                                <a href="{{ url_for('changepassword') }}" class="btn btn-outline-primary">
+                                    <i class="bi bi-key me-1"></i>Change Password
+                                </a>
+                            </div>
+                        </form>
+                        <div class="security-note mt-4">
+                            <i class="bi bi-shield-check"></i>
+                            Your shop information is kept private and
+                            secure.
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= BOOTSTRAP JS ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    <!-- SMART KHATA JS -->
+
+    <script src="{{ url_for('static', filename='js/script.js') }}">
+    </script>
+</body>
+
+</html>
