@@ -103,6 +103,6 @@ The goal of SmartKhata is to provide shopkeepers with a simple, digital, and org
 
 ## 👩‍💻 Developer
 **Snehal Tanpure**
-Computer Technology Student
+**Computer Technology Student**
 
 ⭐ If you find this project useful, feel free to explore the repository and provide feedback.
