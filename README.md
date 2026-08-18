@@ -67,13 +67,10 @@ For Windows:
 ```bash
 venv\Scripts\activate
 ```
-
-### 5. Install Required Packages
-
+###5. Install Flask
 ```bash
-pip install -r requirements.txt
+pip install flask
 ```
-
 ### 6. Run the Flask Application
 
 ```bash
